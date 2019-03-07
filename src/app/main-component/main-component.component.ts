@@ -3,10 +3,7 @@ import * as anime from 'animejs';
 
 @Component({
   selector: 'app-main-component',
-  template: `<div>
-  <p id="check">
-    main-component works!
-  </p>
+  template: `<div class="penguBackGround" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
   <svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="320px" height="480px" viewBox="0 0 320 480"
     enable-background="new 0 0 320 480" xml:space="preserve">
@@ -112,15 +109,20 @@ import * as anime from 'animejs';
   styleUrls: ['./main-component.component.css']
 })
 
-export class MainComponentComponent implements AfterViewInit {
+export class MainComponentComponent implements OnInit{
+  public welcomeMsg = "test";
 
-  constructor() { }
+  constructor(){}
 
-  @ViewChild('check') myDiv: ElementRef;
+  ngOnInit(){}
 
-    ngAfterViewInit() {
-        console.log("hkkkkk")
-        console.log(this.myDiv.nativeElement.innerHTML);
-    }
+  mouseEnter(){
+    console.log("MouseENter");
+  }
+
+  mouseLeave(){
+    console.log("MouseLeave");
+  }
 
 }
+
