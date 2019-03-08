@@ -1,5 +1,9 @@
 .penguBackGround{
     border:1px dotted red; 
     padding: 20px;
-    background-color: lightblue;
 }
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+  }
