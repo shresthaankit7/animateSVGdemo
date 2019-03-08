@@ -3,8 +3,8 @@ import * as anime from 'animejs';
 
 @Component({
   selector: 'app-main-component',
-  template: `<div #myDiv class="penguBackGround" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
-  <svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  template: `<div style="color:blue;" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+  <svg id="penguBackGround" version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="320px" height="480px" viewBox="0 0 320 480"
     enable-background="new 0 0 320 480" xml:space="preserve">
     <g id="outer_body">
@@ -105,6 +105,7 @@ import * as anime from 'animejs';
       </g>
     </g>
   </svg>
+  <div class="square"></div>
 </div>`,
   styleUrls: ['./main-component.component.css']
 })
@@ -112,35 +113,43 @@ import * as anime from 'animejs';
 export class MainComponentComponent implements OnInit, AfterViewInit {
   public welcomeMsg = "test";
 
-  @ViewChild('myDiv') myDiv: ElementRef;
+  public svgPengu;
 
-  constructor() { }
+  constructor() {
+  
+  }
 
   ngAfterViewInit() {
     console.log("I AM VIEW INIT COMPLETED!!!");
     // console.log(this.myDiv.nativeElement.innerHTML);
+    console.log(this.svgPengu)
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log("onInit COMPLETED!!!");
-    console.log(this.myDiv.nativeElement.innerHTML);
-    var svgPengu = this.myDiv.nativeElement.innerHTML 
-
-    anime({
-      targets: 'div',
-      translateX: 250,
-      rotate: '1turn',
-      backgroundColor: '#FFF',
-      duration: 8000
-    });
   }
 
   mouseEnter() {
     console.log("MouseENter");
+    anime({
+      targets: '#penguBackGround',
+      translateX: [0, 100], // from 100 to 250
+      delay: 500,
+      direction: 'alternate',
+      loop: false
+    });
+    
   }
 
   mouseLeave() {
     console.log("MouseLeave");
+    anime({
+      targets: '#penguBackGround',
+      translateX: [100, 0], // from 100 to 250
+      delay: 500,
+      direction: 'alternate',
+      loop: false
+    });
   }
 
 }
