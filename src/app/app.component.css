@@ -36,11 +36,26 @@
   display: inline-block;
   margin: 10px;
   font-weight: bold;
+  border-style: solid;
 }
 
 .main-menu-list a {
   color: #365;
   text-decoration: none;
+}
+
+.main-menu-list:hover
+{
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
 }
 
 .penguin-area {
