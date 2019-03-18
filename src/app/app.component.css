@@ -2,6 +2,11 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+a {
+  color: #365;
+  text-decoration: none;
+}
+
 #header {
   width: 100%;
   height: 70px;
@@ -38,12 +43,90 @@
   font-weight: bold;
 }
 
-.main-menu-list a {
-  color: #365;
-  text-decoration: none;
+.main-menu-dropdown {
+  list-style-type: none;
+  display: inline-block;
+  margin: 10px;
+  font-weight: bold;
+  position: relative;
 }
 
 .penguin-area {
   background-color: rgb(171, 248, 223);
   margin: -7px;
+  min-height: 550px;
 }
+
+.sub-menu {
+  position: absolute;
+  display: none;  
+}
+
+.sub-menu a {
+  list-style-type: none;
+  display: block;  
+  padding: 5px;
+  width: 250px;
+}
+
+.main-menu-dropdown:hover .sub-menu {
+  display: block;
+  background-color: white;
+}
+
+.animation {
+  min-height: 550px;
+  width: inherit;
+  background-color: coral;
+  margin: -7px;
+}
+
+.animation a {
+  float: right;
+  font-size: 36px;
+  margin-right: 100px;
+  margin-top: 100px;
+}
+
+.design {
+  min-height: 550px;
+  width: inherit;
+  background-color: plum;
+  margin: -7px;
+}
+
+.design a {
+  float: left;
+  font-size: 36px;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+.androidapp {
+  min-height: 550px;
+  width: inherit;
+  background-color: pink;
+  margin: -7px;
+}
+
+.androidapp a {
+  float: right;
+  font-size: 36px;
+  margin-right: 100px;
+  margin-top: 100px;
+}
+
+.webapp {
+  min-height: 550px;
+  width: inherit;
+  background-color: olivedrab;
+  margin: -7px;
+}
+
+.webapp a {
+  float: left;
+  font-size: 36px;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
