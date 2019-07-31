@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <script>
+            angular.module("myApp",[]).controller("HelloWorldController",function($scope){
+                $scope.message = "Hello"
+    
+                $scope.firstListValues = ["FType1","FType2"]
+                $scope.secondListValues = ["ST1","ST2"]
+    
+                $scope.item = {}
+                $scope.item["firstItem"] = "hi"
+                $scope.item["secondItem"] = "hiSecond"
+
+
+            })
+    </script>
+</head>
+<body ng-app="myApp">
+
+    <div ng-controller="HelloWorldController">
+    <h1>{{message}}</h1>
+       
+    <h3>AngularJS Select Box or Dropdown List Example</h3>
+
+    <select name="users" ng-model="userSelect">
+        <option value="">--Select--</option>
+        <option value="1">Suresh</option>
+        <option value="2">Rohini</option>
+        <option value="3">Praveen</option>
+    </select>
+
+    <p>Selected value {{userSelect}}</p>
+    </div>
+    
+</body>
+</html>
