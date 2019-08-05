@@ -6,39 +6,117 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+
     <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.css">
     <script>
-            angular.module("myApp",[]).controller("HelloWorldController",function($scope){
-                $scope.message = "Hello"
-    
-                $scope.firstListValues = ["FType1","FType2"]
-                $scope.secondListValues = ["ST1","ST2"]
-    
-                $scope.item = {}
-                $scope.item["firstItem"] = "hi"
-                $scope.item["secondItem"] = "hiSecond"
+        angular.module("myApp",['ui.select','ngSanitize']).controller("settingPnlUpdateController",function($scope){
+
+            $scope.jarTypes = [{"name":"JarType1"},{"name":"JarType2"}];
+            $scope.fileMappingTypes = [{"name":"FileMapType1"},{"name":"FileMapType2"}];
+
+            $scope.jarType = {}
+            $scope.jarType.selected = ''
+            $scope.fme = {}
+            $scope.fme.selected = ''
 
 
-            })
+            $scope.updateClientSettings = function(){
+
+                console.log("Hi, I am update called!!")
+                console.log($scope.jarType.selected)
+                console.log($scope.fme.selected)
+            }
+
+            $scope.jarType.selected = $scope.jarTypes[0]
+            $scope.fme.selected = $scope.fileMappingTypes[0]
+
+        })
     </script>
 </head>
 <body ng-app="myApp">
 
-    <div ng-controller="HelloWorldController">
-    <h1>{{message}}</h1>
-       
-    <h3>AngularJS Select Box or Dropdown List Example</h3>
+    <div ng-controller="settingPnlUpdateController">
+        <h4>Update Client Settings</h4>
+        <form name="form" ng-submit="updateClientSettings(masterTableValue,jarTypeValue,selected,fmeTypeValue.selected)" novalidate="">
+            <div>
+                <div id="accordion">
+                    <div class="panel panel-default">
 
-    <select name="users" ng-model="userSelect">
-        <option value="">--Select--</option>
-        <option value="1">Suresh</option>
-        <option value="2">Rohini</option>
-        <option value="3">Praveen</option>
-    </select>
+                        <div id="collapseOne">
+                            <div>
+                                <div class="row">
+                                    <!-- Master table Type --------------->
+                                    <div class="col-xs-6 col-md-6 form-group pull-left">
+                                        <label class="control-label  top5">Master Table Version<span
+                                                style="color: red">*</span></label>
+                                    </div>
 
-    <p>Selected value {{userSelect}}</p>
+                                    <div class="col-xs-6 col-md-6">
+                                        <input type="text" class="form-control" id="masterTableVersion" placeholder="eg: M2.9"
+                                               ng-model="masterTableValue">
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                    <!-- Engine Type --------------->
+                                    <div class="col-xs-6 col-md-6">
+                                        <label>Engine Type
+                                            <span style="color: red">*</span></label>
+                                    </div>
+                                    <div class="col-xs-6 col-md-6">
+                                        <ui-select ng-model="jarType.selected">
+                                            <ui-select-match
+                                                    placeholder="Select Instance Market">{{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="jarType in jarTypes">
+                                                <span ng-bind-html="jarType.name"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <!-- File Mapping Engine Type --------------->
+                                    <div class="col-xs-6 col-md-6">
+                                        <label>File Mapping Engine Type<span
+                                                style="color: red">*</span></label>
+                                    </div>
+                                    <div class="col-xs-6 col-md-6">
+                                        <ui-select ng-model="fme.selected">
+                                            <ui-select-match
+                                                    placeholder="Select File Mapping Engine Type">{{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="fme in fileMappingTypes">
+                                                <span ng-bind-html="fme.name"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Save"
+                       class="btn btn-primary">
+                <input type="button" class="btn btn-default" ng-click="closeThisDialog(Close)" class="close" value="Close"/>
+            </div>
+        </form>
     </div>
-    
+
+
 </body>
+
+
 </html>
